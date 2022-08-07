@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+
+    <title>Golang Consume API</title>
+
+</head>
+<body>
+    <div class="container mt-5">
+        <h3>Create post</h3>
+        <a href="/posts" class="btn btn-sm btn-primary">Lihat Data</a>
+        <hr/>
+
+        <form action="/post/store" method="post">
+            <div class="form-group">
+                <label for="">Post title</label>
+                <input type="text" name="post_title" value="{{ .post.Title }}" class="form-control">
+            </div>
+            
+            <div class="form-group">
+                <label for="">Post body</label>
+                <textarea name="post_body" rows="10" class="form-control">{{ .post.Body }}</textarea>
+            </div>
+
+            <div class="form-gruop">
+                {{ if .post.Id }}
+                    <input type="hidden" name="post_id" value="{{ .post.Id }}">
+                {{ end }}
+                <button type="submit" class="btn btn-primary btn-block">SUBMIT</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>
